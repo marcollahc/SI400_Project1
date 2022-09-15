@@ -10,6 +10,15 @@ public class ContentFile {
     public void setText(String text) {}
     public List<String> getVector() {}
     public void setVector(List<String> text) {}
-    public String filterText(String text) {}
+    
+    public String filterText(String firtAux) {
+        String secondAux = firtAux.replaceAll("\\p{Punct}", "");
+        String thirdAux = secondAux.replaceAll("\n", " ");
+        System.out.println("\nSEM PONTUAÇÃO:\n");
+        String result = thirdAux.toLowerCase();
+        
+        return result;
+    }
+    
     public List<String> textSplit(List<String> text) {}
 }

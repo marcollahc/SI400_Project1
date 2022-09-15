@@ -12,9 +12,8 @@ public class ManagementFile {
     public List<Files> getFiles() {}
     public void setFiles(List<Files>) {}
 
-
     // Para fazer rodar na main: colocar o método numa String com o local do arquivo
-    // Exemplo: String texto = openFile(src/Texto01.txt);
+    // Exemplo: String texto = openFile("src/Texto01.txt");
     // e para printar: System.out.println(texto);
     public static String openFile(String file) {
         try {
