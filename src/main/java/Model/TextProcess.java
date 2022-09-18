@@ -1,40 +1,64 @@
 package Model;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class TextProcess {
-    private String plainText;
-    private List<String> graphRow;
-    private List<String> uniqueWords;
+    private String plain_text;
+    private List<String> full_vector;
+    private List<String> unique_words;
+    private List<List<String>> graphRow;
 
     public String getPlainText() {
-    	return plainText;
+        return this.plain_text;
     }
-    
-    public void setPlainText(String plainText) {
-    	this.plainText = plainText;
+
+    public void setPlainText(String plain_text) {
+        this.plain_text = plain_text;
     }
-    
-    public void transformStringToList(String plainText) {
-    	splitTextToList(plainText);
+
+    public List<String> getFullVector() {
+        return full_vector;
     }
-    
-    public void splitTextToList(String stringToSplit) {
-    	List<String> wordsList = Arrays.asList(stringToSplit.split(" "));
+
+    public void setFullVector(List<String> full_vector) {
+        this.full_vector = full_vector;
+    }
+
+    public List<String> getUniqueWords() {
+        return unique_words;
+    }
+
+    public void setUniqueWords(List<String> unique_words) {
+        this.unique_words = unique_words;
+    }
+
+    /* public void transformStringToList(String plain_text) {
+    	splitTextToList(plain_text);
+    } */
+
+    /* public void splitTextToList(String stringToSplit) {
+    	String[] wordsList = Arrays.asList(stringToSplit.split(" "));
         System.out.println(wordsList);
-        
+
         fillUniqueWords(wordsList);
-    }
+    } */
     
-    public void fillUniqueWords(List<String> wordsList) {
-    	List<String> wordsListToFill = wordsList;
-    	Set<String> mySet = new HashSet<String>(wordsListToFill);
-        System.out.println(mySet);
+    public void fillUniqueWords() {
+        List<String> wordsList = this.getFullVector();
+
+    	Set<String> unique_words = new HashSet<>(wordsList);
+        List<String> list = new ArrayList<>(unique_words);
+
+        Collections.sort(list);
+        this.setUniqueWords(list);
     }
     
     public void fillRowsWords(String text) {}
     public void fillColumnsWords(List<String> text) {}
+
+    public void mountDigraph() {
+        for (String item:this.getUniqueWords()) {
+
+        }
+    }
 }

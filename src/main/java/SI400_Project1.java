@@ -1,18 +1,25 @@
 import Model.ContentFile;
-import static Model.ManagementFile.openFile;
-import Controller.Digraph;
+import Model.ManagementFile;
 import Model.TextProcess;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.List;
+
 public class SI400_Project1 {
-    public static void main(String[] args) { 
-        String str = openFile("src/Texto01.txt");
-        
+    public static void main(String[] args) throws IOException {
+        Path file = ManagementFile.getInstance().openFile("./src/TextoValidacao01.txt");
+
+        ContentFile content_file = ContentFile.getInstance();
+        String text_content = content_file.filterText(file);
+        List<String> text_vector = content_file.textSplit(text_content);
+
+        System.out.println(text_vector);
+
         TextProcess processor = new TextProcess();
-        String stringToFormat = "Prepare o seu coração pras coisas que eu vou contar contar vou";
-        processor.transformStringToList(stringToFormat);
-        
-        ContentFile content = new ContentFile();
-        content.filterText(str);
-        System.out.println(str);
+        processor.setFullVector(text_vector);
+        processor.fillUniqueWords();
+        System.out.println(processor.getUniqueWords());
+        processor.mountDigraph();
     }
 }
