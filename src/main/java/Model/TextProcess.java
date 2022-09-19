@@ -2,7 +2,6 @@ package Model;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class TextProcess {
     private String plain_text;
@@ -60,13 +59,15 @@ public class TextProcess {
 
         this.setUniqueWords(list);
     }
-    
-    public void fillRowsWords(String text) {}
-    public void fillColumnsWords(List<String> text) {}
+
+    public String nextWord(List<String> row) {
+        return "";
+    }
 
     public void mountDigraph() {
         for (String item:this.getUniqueWords()) {
-
+            List<String> row = new ArrayList<>();
+            row.add(item);
         }
     }
 }
