@@ -12,14 +12,13 @@ public class SI400_Project1 {
 
         ContentFile content_file = ContentFile.getInstance();
         String text_content = content_file.filterText(file);
-        List<String> text_vector = content_file.textSplit(text_content);
+        List<List<String>> text_vector = content_file.textSplit(text_content);
 
         System.out.println(text_vector);
 
         TextProcess processor = new TextProcess();
         processor.setFullVector(text_vector);
         processor.fillUniqueWords();
-        System.out.println(processor.getUniqueWords());
         processor.mountDigraph();
     }
 }

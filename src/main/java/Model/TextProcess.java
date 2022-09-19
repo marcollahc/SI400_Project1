@@ -1,12 +1,15 @@
 package Model;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TextProcess {
     private String plain_text;
-    private List<String> full_vector;
+    private List<List<String>> full_vector;
     private List<String> unique_words;
-    private List<List<String>> graphRow;
+
+    private List<List<String>> graph;
 
     public String getPlainText() {
         return this.plain_text;
@@ -16,11 +19,11 @@ public class TextProcess {
         this.plain_text = plain_text;
     }
 
-    public List<String> getFullVector() {
-        return full_vector;
+    public List<List<String>> getFullVector() {
+        return this.full_vector;
     }
 
-    public void setFullVector(List<String> full_vector) {
+    public void setFullVector(List<List<String>> full_vector) {
         this.full_vector = full_vector;
     }
 
@@ -44,12 +47,17 @@ public class TextProcess {
     } */
     
     public void fillUniqueWords() {
-        List<String> wordsList = this.getFullVector();
+        List<List<String>> wordsList = this.getFullVector();
 
-    	Set<String> unique_words = new HashSet<>(wordsList);
+        List<String> oneLineWords = wordsList
+                .stream()
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+
+    	Set<String> unique_words = new HashSet<>(oneLineWords);
         List<String> list = new ArrayList<>(unique_words);
-
         Collections.sort(list);
+
         this.setUniqueWords(list);
     }
     

@@ -3,6 +3,7 @@ package Model;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContentFile {
@@ -20,12 +21,20 @@ public class ContentFile {
         String[] lyrics = file_content.split("\n\n");
         String without_specials = lyrics[1].replaceAll("\\p{Punct}", "");
         String trimmed_text = without_specials.trim();
-        String one_line = trimmed_text.replaceAll("\n", " ");
 
-        return one_line.toLowerCase();
+        return trimmed_text.toLowerCase();
     }
     
-    public static List<String> textSplit(String text) {
-        return List.of(text.split(" "));
+    public static List<List<String>> textSplit(String text) {
+        List<List<String>> splited_lines = new ArrayList<>();
+
+        List<String> lines = List.of(text.split("\n"));
+
+        for (String item:lines) {
+            List<String> words = List.of(item.split(" "));
+            splited_lines.add(new ArrayList<>(words));
+        }
+
+        return splited_lines;
     }
 }
