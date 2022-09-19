@@ -65,9 +65,22 @@ public class TextProcess {
     }
 
     public void mountDigraph() {
-        for (String item:this.getUniqueWords()) {
+        for (String unique_word:this.getUniqueWords()) {
             List<String> row = new ArrayList<>();
-            row.add(item);
+            row.add(unique_word);
+            for (List<String> line_vector:this.getFullVector()) {
+                for (int word_count = 0; word_count < line_vector.size(); word_count++) {
+                    if (line_vector.get(word_count) == unique_word) {
+                        if ((word_count + 1) < line_vector.size()) {
+                            if (line_vector.get(word_count + 1) != null) {
+                                row.add(line_vector.get(word_count + 1));
+                            }
+                        }
+                    }
+                }
+            }
+
+            System.out.println(row);
         }
     }
 }

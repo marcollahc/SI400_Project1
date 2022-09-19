@@ -8,7 +8,7 @@ import java.util.List;
 
 public class SI400_Project1 {
     public static void main(String[] args) throws IOException {
-        Path file = ManagementFile.getInstance().openFile("./src/TextoValidacao01.txt");
+        Path file = ManagementFile.getInstance().openFile("./src/Texto01.txt");
 
         ContentFile content_file = ContentFile.getInstance();
         String text_content = content_file.filterText(file);
