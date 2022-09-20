@@ -66,21 +66,27 @@ public class TextProcess {
 
     public void mountDigraph() {
         for (String unique_word:this.getUniqueWords()) {
-            List<String> row = new ArrayList<>();
+
+            /* List<String> row = new ArrayList<>();
             row.add(unique_word);
-            for (List<String> line_vector:this.getFullVector()) {
-                for (int word_count = 0; word_count < line_vector.size(); word_count++) {
-                    if (line_vector.get(word_count) == unique_word) {
-                        if ((word_count + 1) < line_vector.size()) {
-                            if (line_vector.get(word_count + 1) != null) {
-                                row.add(line_vector.get(word_count + 1));
+
+            List<List<String>> line_vector = this.getFullVector();
+
+            for (int row_count = 0; row_count < line_vector.size(); row_count++) {
+                for (int word_count = 0; word_count < line_vector.get(row_count).size(); word_count++) {
+                    if (line_vector.get(row_count).get(word_count) == unique_word) {
+                        if ((word_count + 1) < line_vector.get(row_count).size()) {
+                            row.add(line_vector.get(row_count).get(word_count + 1));
+                        } else {
+                            if ((row_count + 1) < line_vector.size()) {
+                                row.add(line_vector.get(row_count + 1).get(0));
                             }
                         }
                     }
                 }
             }
 
-            System.out.println(row);
+            System.out.println(row); */
         }
     }
 }
