@@ -65,28 +65,41 @@ public class TextProcess {
     }
 
     public void mountDigraph() {
-        for (String unique_word:this.getUniqueWords()) {
+        this.graph = new ArrayList<>();
 
-            /* List<String> row = new ArrayList<>();
+        /* for (String unique_word:this.getUniqueWords()) {
+
+            boolean add_graph = true;
+
+            List<String> row = new ArrayList<>();
             row.add(unique_word);
 
-            List<List<String>> line_vector = this.getFullVector();
-
-            for (int row_count = 0; row_count < line_vector.size(); row_count++) {
-                for (int word_count = 0; word_count < line_vector.get(row_count).size(); word_count++) {
-                    if (line_vector.get(row_count).get(word_count) == unique_word) {
-                        if ((word_count + 1) < line_vector.get(row_count).size()) {
-                            row.add(line_vector.get(row_count).get(word_count + 1));
+            for (int row_count = 0; row_count < this.getFullVector().size(); row_count++) {
+                for (int word_count = 0; word_count < this.getFullVector().get(row_count).size(); word_count++) {
+                    if (this.getFullVector().get(row_count).get(word_count) == unique_word) {
+                        if ((word_count + 1) < this.getFullVector().get(row_count).size()) {
+                            row.add(this.getFullVector().get(row_count).get(word_count + 1));
                         } else {
-                            if ((row_count + 1) < line_vector.size()) {
-                                row.add(line_vector.get(row_count + 1).get(0));
+                            if ((row_count + 1) < this.getFullVector().size()) {
+                                row.add(this.getFullVector().get(row_count + 1).get(0));
+                            } else {
+                                add_graph = false;
                             }
                         }
                     }
                 }
             }
 
-            System.out.println(row); */
-        }
+            if (add_graph) {
+                graph.add(new ArrayList<>(row));
+            }
+        } */
+
+        /*for (List<String> line:this.graph) {
+            for (String word:line) {
+                System.out.printf(word + ", ");
+            }
+            System.out.printf("\n");
+        } */
     }
 }
