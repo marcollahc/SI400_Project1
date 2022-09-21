@@ -67,6 +67,43 @@ public class TextProcess {
     public void mountDigraph() {
         this.graph = new ArrayList<>();
 
+        for (String unique_word:this.getUniqueWords()) {
+            List<String> row = new ArrayList<>();
+            row.add(unique_word);
+
+            boolean find_next;
+
+            this.getFullVector().forEach(full_line -> {
+                int line_size = full_line.size();
+                int word_position = full_line.indexOf(unique_word);
+
+                if (word_position > -1) {
+                    if ((word_position + 1) < line_size) {
+                        if (row.indexOf(full_line.get(word_position + 1)) < 0) {
+                            row.add(full_line.get(word_position + 1));
+                        }
+                        find_next = false;
+                    } else {
+                        find_next = true;
+                    }
+                }
+                // Adicionar o primeir da próxima linha
+
+                // System.out.printf("word_position: " + word_position + " - unique_word: " + unique_word + " - next_position: " + full_line.get(word_position + 1) + "\n");
+            });
+
+            if (row.size() > 1) {
+                this.graph.add(row);
+            }
+        }
+
+        for (List<String> line:this.graph) {
+            for (String word:line) {
+                System.out.printf(word + ", ");
+            }
+            System.out.printf("\n");
+        }
+
         /* for (String unique_word:this.getUniqueWords()) {
 
             boolean add_graph = true;

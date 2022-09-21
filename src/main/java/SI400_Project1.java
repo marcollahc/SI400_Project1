@@ -14,8 +14,6 @@ public class SI400_Project1 {
         String text_content = content_file.filterText(file);
         List<List<String>> text_vector = content_file.textSplit(text_content);
 
-        System.out.println(text_vector);
-
         TextProcess processor = new TextProcess();
         processor.setFullVector(text_vector);
         processor.fillUniqueWords();
