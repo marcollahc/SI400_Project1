@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class ManagementFile {
     private static ManagementFile instance = null;
 
-    public void getFiles() {
+    public ArrayList<String> getFiles() {
         ArrayList<String> files_list = new ArrayList<>();
 
         System.out.println("Please enter the archive name and press Enter: ");
@@ -20,8 +20,7 @@ public class ManagementFile {
             files_list.add(line);
         }
         input.close();
-        // Mostra quais arquivos estao na lista:
-        // System.out.println(files_list);
+        return files_list;
     }
 
     public static ManagementFile getInstance() {
