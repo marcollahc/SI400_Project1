@@ -9,22 +9,41 @@ import java.util.List;
 public class ContentFile {
     private static ContentFile instance = null;
 
+    /**
+     * Class contructor
+     * @return ContentFile instance of ContentFile class.
+     */
     public static ContentFile getInstance() {
         if (instance == null) {
             instance = new ContentFile();
         }
         return instance;
     }
-    
+
+    /**
+     * This method is responsible to read the text file and sanetize some characters.
+     *
+     * @param file locale of file on the disk.
+     * @return full text without special characters, trimmed and all letters in lower case.
+     * @see String
+     * @throws IOException
+     */
     public static String filterText(Path file) throws IOException {
         String file_content = Files.readString(file);
         String[] lyrics = file_content.split("\n\n");
         String without_specials = lyrics[1].replaceAll("\\p{Punct}", "");
         String trimmed_text = without_specials.trim();
-
-        return trimmed_text.toLowerCase();
+        String all_letters_lower = trimmed_text.toLowerCase();
+        return all_letters_lower;
     }
-    
+
+    /**
+     * This method is responsible to transform a plain text in vector to facilitate the digraph construction.
+     *
+     * @param text plain text sanitezed in the filterText.
+     * @return text gerenerated in filterText transformed in arrays of arrays.
+     * @see List<List<String>>
+     */
     public static List<List<String>> textSplit(String text) {
         List<List<String>> splited_lines = new ArrayList<>();
 
