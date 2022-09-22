@@ -67,74 +67,58 @@ public class TextProcess {
     public void mountDigraph() {
         this.graph = new ArrayList<>();
 
-        for (String unique_word:this.getUniqueWords()) {
-            List<String> row = new ArrayList<>();
-            row.add(unique_word);
+        List<String> row_digraph = null;
 
-            boolean find_next;
+        for (String unique_word : this.getUniqueWords()) {
+            row_digraph = new ArrayList<>();
+            row_digraph.add(unique_word);
 
-            this.getFullVector().forEach(full_line -> {
-                int line_size = full_line.size();
-                int word_position = full_line.indexOf(unique_word);
+            boolean add_next = false;
 
-                if (word_position > -1) {
-                    if ((word_position + 1) < line_size) {
-                        if (row.indexOf(full_line.get(word_position + 1)) < 0) {
-                            row.add(full_line.get(word_position + 1));
-                        }
-                        find_next = false;
-                    } else {
-                        find_next = true;
+            for (int line_count = 0; line_count < this.getFullVector().size(); line_count++) {
+                List<String> full_line = this.getFullVector().get(line_count);
+
+                /* if (add_next) {
+                    String next_word = full_line.get(0);
+
+                    if (row_digraph.indexOf(next_word) < 0) {
+                        row_digraph.add(next_word);
                     }
-                }
-                // Adicionar o primeir da próxima linha
 
-                // System.out.printf("word_position: " + word_position + " - unique_word: " + unique_word + " - next_position: " + full_line.get(word_position + 1) + "\n");
-            });
+                    add_next = false;
+                } */
 
-            if (row.size() > 1) {
-                this.graph.add(row);
-            }
-        }
+                int limit_line = full_line.size();
 
-        for (List<String> line:this.graph) {
-            for (String word:line) {
-                System.out.printf(word + ", ");
-            }
-            System.out.printf("\n");
-        }
+                for (int word_count = 0; word_count < full_line.size(); word_count++) {
+                    String word = full_line.get(word_count);
 
-        /* for (String unique_word:this.getUniqueWords()) {
-
-            boolean add_graph = true;
-
-            List<String> row = new ArrayList<>();
-            row.add(unique_word);
-
-            for (int row_count = 0; row_count < this.getFullVector().size(); row_count++) {
-                for (int word_count = 0; word_count < this.getFullVector().get(row_count).size(); word_count++) {
-                    if (this.getFullVector().get(row_count).get(word_count) == unique_word) {
-                        if ((word_count + 1) < this.getFullVector().get(row_count).size()) {
-                            row.add(this.getFullVector().get(row_count).get(word_count + 1));
+                    if (word == unique_word) {
+                        System.out.printf("word: " + word + "| ");
+                        if ((word_count + 1) == limit_line) {
+                            add_next = true;
                         } else {
-                            if ((row_count + 1) < this.getFullVector().size()) {
-                                row.add(this.getFullVector().get(row_count + 1).get(0));
-                            } else {
-                                add_graph = false;
+                            String next_word = full_line.get(word_count + 1);
+
+                            System.out.printf("word: " + word + " -> next_word: " + next_word + "\n");
+
+                            if (row_digraph.indexOf(next_word) < 0) {
+                                row_digraph.add(next_word);
                             }
                         }
                     }
                 }
+                System.out.printf("\n");
             }
 
-            if (add_graph) {
-                graph.add(new ArrayList<>(row));
+            if (row_digraph.size() > 1) {
+                this.graph.add(row_digraph);
             }
-        } */
+        }
 
-        /*for (List<String> line:this.graph) {
-            for (String word:line) {
-                System.out.printf(word + ", ");
+        /* for (List<String> row:this.graph) {
+            for (String column:row) {
+                System.out.printf(column + ", ");
             }
             System.out.printf("\n");
         } */
