@@ -102,7 +102,7 @@ public class TextProcess {
 
                             System.out.printf("word: " + word + " -> next_word: " + next_word + "\n");
 
-                            if (row_digraph.indexOf(next_word) < 0) {
+                            if (row_digraph.contains(next_word) < 0) {
                                 row_digraph.add(next_word);
                             }
                         }
