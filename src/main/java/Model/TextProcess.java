@@ -107,12 +107,5 @@ public class TextProcess {
                 this.graph.add(row_digraph);
             }
         }
-
-        for (List<String> row:this.graph) {
-            for (String column:row) {
-                System.out.printf(column + ", ");
-            }
-            System.out.printf("\n");
-        }
     }
 }
