@@ -4,6 +4,7 @@ import Model.ContentFile;
 import Model.ManagementFile;
 import Model.TextProcess;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +13,12 @@ public class Digraph {
     public void makeDigraph() {
         ManagementFile management_file = ManagementFile.getInstance();
 
-        ArrayList<String> arrayTest = management_file.getFiles();
+        List<File> arrayFiles = management_file.getFiles();
 
-        arrayTest.forEach(element -> {
+        arrayFiles.forEach(element -> {
             try {
-                Path file = management_file.openFile("./src/" + element + ".txt");
+                String filetostring = element.toString();
+                Path file = management_file.openFile(filetostring);
 
                 ContentFile content_file = ContentFile.getInstance();
                 String text_content = content_file.filterText(file);

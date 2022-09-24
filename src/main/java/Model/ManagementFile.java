@@ -1,8 +1,13 @@
 package Model;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class ManagementFile {
     private static ManagementFile instance = null;
@@ -14,20 +19,22 @@ public class ManagementFile {
         return instance;
     }
 
-    public ArrayList<String> getFiles() {
-        ArrayList<String> files_list = new ArrayList<>();
+    public List<File> getFiles() {
+        JFileChooser chooser = new JFileChooser();
+        List<File> files_list = new ArrayList<File>();
+        
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Text File .txt", "txt");
+        chooser.setAcceptAllFileFilterUsed(false);
+        chooser.addChoosableFileFilter(filter);
+        chooser.setMultiSelectionEnabled(true);
 
-        System.out.println("Please enter the archive name and press Enter: ");
-        Scanner input = new Scanner(System.in);
-        while (input.hasNextLine()) {
-            String line = input.nextLine();
-            if (line.isEmpty()) {
-                break;
-            }
-            files_list.add(line);
+        int outputChooser = chooser.showOpenDialog(null);
+        if (outputChooser == chooser.APPROVE_OPTION) {
+            File[] selectedFiles = chooser.getSelectedFiles();
+            files_list = Arrays.asList(selectedFiles);
+        } else {
+            System.out.println("No file selected");
         }
-        input.close();
-
         return files_list;
     }
 
