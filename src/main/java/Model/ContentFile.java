@@ -6,11 +6,14 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 public class ContentFile {
     private static ContentFile instance = null;
 
     /**
-     * Class contructor
+     * Class constructor
      * @return ContentFile instance of ContentFile class.
      */
     public static ContentFile getInstance() {
@@ -25,7 +28,6 @@ public class ContentFile {
      *
      * @param file locale of file on the disk.
      * @return full text without special characters, trimmed and all letters in lower case.
-     * @see String
      * @throws IOException
      */
     public static String filterText(Path file) throws IOException {
@@ -42,7 +44,6 @@ public class ContentFile {
      *
      * @param text plain text sanitezed in the filterText.
      * @return text gerenerated in filterText transformed in arrays of arrays.
-     * @see List<List<String>>
      */
     public static List<List<String>> textSplit(String text) {
         List<List<String>> splited_lines = new ArrayList<>();

@@ -9,9 +9,16 @@ import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ *
+ */
 public class ManagementFile {
     private static ManagementFile instance = null;
 
+    /**
+     * Class constructor
+     * @return ManagementFile instance of ManagementFile class.
+     */
     public static ManagementFile getInstance() {
         if (instance == null) {
             instance = new ManagementFile();
@@ -19,6 +26,9 @@ public class ManagementFile {
         return instance;
     }
 
+    /**
+     * @return List with all files selected in the operational system files management.
+     */
     public List<File> getFiles() {
         JFileChooser chooser = new JFileChooser();
         List<File> files_list = new ArrayList<File>();
@@ -38,6 +48,10 @@ public class ManagementFile {
         return files_list;
     }
 
+    /**
+     * @param file absolute file path
+     * @return file object that makes it possible read the file
+     */
     public static Path openFile(String file) {
         return Path.of(file);
     }
