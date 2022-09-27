@@ -64,10 +64,7 @@ public class ManagementFile {
      * @return String Same filename, but with extension changed.
      */
     public static String getFilename(String path) {
-        String[] array_path = path.split(File.separator);
-        String old_filename = array_path[array_path.length - 1];
-        String new_filename = old_filename.replaceAll(".txt", ".csv");
-        return new_filename;
+        return path.replaceAll(".txt", ".csv");
     }
 
     /**
