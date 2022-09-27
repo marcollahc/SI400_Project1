@@ -8,5 +8,6 @@ public class SI400_Project1 {
     public static void main(String[] args) throws IOException {
         Digraph digraph = new Digraph();
         digraph.makeDigraph();
+
     }
 }

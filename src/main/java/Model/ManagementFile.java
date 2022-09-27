@@ -1,11 +1,13 @@
 package Model;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import java.util.List;
+import java.io.FileWriter;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -56,5 +58,36 @@ public class ManagementFile {
         return Path.of(file);
     }
 
-    public void writeFile(String path) {}
+    public void writeFile(String path) {
+        
+    // first create file object for file placed at location
+    // specified by filepath
+    File file = new File(path);
+    try {
+        // create FileWriter object with file as parameter
+        FileWriter outputfile = new FileWriter(file);
+  
+        // create CSVWriter object filewriter object as parameter
+        CSVWriter writer = new CSVWriter(outputfile);
+        
+        String delimiter = ",";
+        
+		String result = "", prefix = "";
+		for (String s: file.list())
+		{
+			result += prefix + s;
+			prefix = delimiter;
+		}
+      
+        writer.writeNext(result);
+
+        // closing writer connection
+        writer.close();
+    }
+    catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+   
+    }
 }

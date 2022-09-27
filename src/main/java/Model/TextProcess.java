@@ -107,5 +107,28 @@ public class TextProcess {
                 this.graph.add(row_digraph);
             }
         }
+        
+        for (List<String> item:this.graph) {
+            System.out.println(item);
+        }
+       
     }
+    
+    public void write(){
+        
+		String delimiter = ",";
+
+		String result = "", prefix = "";
+		for (String s: unique_words)
+		{
+			result += prefix + s;
+			prefix = delimiter;
+		}
+
+		System.out.println(result);
+        
+    }
+    
+
+    
 }
