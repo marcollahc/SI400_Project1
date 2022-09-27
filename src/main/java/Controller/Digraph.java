@@ -7,6 +7,8 @@ import Model.TextProcess;
 import java.io.File;
 import java.nio.file.Path;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  * Controller class responsible for coordinating the modeling classes to perform the task of reading the files and writing a digraph in csv format.
@@ -46,6 +48,9 @@ public class Digraph {
 
                 String new_filename = management_file.getFilename(filetostring);
                 management_file.writeFile(new_filename, digraph);
+                
+                JFrame frame = new JFrame("Criador de dígrafos");
+                JOptionPane.showMessageDialog(frame, "Seu arquivo foi salvo no endereço:\n" + new_filename);
             } catch (Exception e) {
                 System.out.println("Unexpected error in file " + element + ": " + e);
             }
