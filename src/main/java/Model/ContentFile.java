@@ -35,8 +35,8 @@ public class ContentFile {
      */
     public static String filterText(Path file) throws IOException {
         String file_content = Files.readString(file);
-        String[] lyrics = file_content.split("\n\n");
-        String without_specials = lyrics[0].replaceAll("\\p{Punct}", "");
+        String[] lyrics = file_content.split(System.lineSeparator() + System.lineSeparator());
+        String without_specials = lyrics[1].replaceAll("\\p{Punct}", "");
         String trimmed_text = without_specials.trim();
         String all_letters_lower = trimmed_text.toLowerCase();
         return all_letters_lower;
