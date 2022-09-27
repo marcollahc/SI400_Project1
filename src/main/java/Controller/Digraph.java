@@ -6,10 +6,23 @@ import Model.TextProcess;
 
 import java.io.File;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controller class responsible for coordinating the modeling classes to perform the task of reading the files and writing a digraph in csv format.
+ *
+ * @author Carolina Noda Morishita
+ * @author Gustavo Ramos Romagnolo
+ * @author Marcos César Medeiros
+ * @author Mariana Pereira Araújo
+ * @author Thamires de Melo Prado
+ * @version 1.0
+ */
 public class Digraph {
+    /**
+     * Method responsible for coordinating the project classes to obtain and generate the files, resulting in the digraph.
+     *
+     */
     public void makeDigraph() {
         ManagementFile management_file = ManagementFile.getInstance();
 
@@ -28,16 +41,11 @@ public class Digraph {
                 processor.setFullVector(text_vector);
                 processor.fillUniqueWords();
                 processor.mountDigraph();
+                processor.transformListToString();
+                String digraph = processor.getPlainText();
 
-                /*
-                Criar um método para converter o graph dentro da TextProcess para texto,
-                removendo respeitando as quebras de linha e concatenando as palavras por vírgula.
-                */
-
-                /*
-                Obter o texto gerado no passo anterior, e salvar com o mesmo nome do arquivo inserido,
-                mas com a a extensão .csv.
-                */
+                String new_filename = management_file.getFilename(filetostring);
+                management_file.writeFile(new_filename, digraph);
             } catch (Exception e) {
                 System.out.println("Unexpected error in file " + element + ": " + e);
             }
