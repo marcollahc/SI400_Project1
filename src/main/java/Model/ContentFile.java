@@ -35,7 +35,7 @@ public class ContentFile {
      */
     public static String filterText(Path file) throws IOException {
         String file_content = Files.readString(file);
-        String[] lyrics = file_content.split("\\r?\\n\\r?\\n");
+        String[] lyrics = file_content.split(System.getProperty("line.separator") + System.getProperty("line.separator"));
         String without_specials = lyrics[1].replaceAll("\\p{Punct}", "");
         String trimmed_text = without_specials.trim();
         String all_letters_lower = trimmed_text.toLowerCase();
@@ -51,7 +51,7 @@ public class ContentFile {
     public static List<List<String>> textSplit(String text) {
         List<List<String>> splited_lines = new ArrayList<>();
 
-        List<String> lines = List.of(text.split("\n"));
+        List<String> lines = List.of(text.split(System.getProperty("line.separator")));
 
         for (String item:lines) {
             List<String> words = List.of(item.split(" "));
