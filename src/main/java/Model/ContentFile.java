@@ -29,9 +29,9 @@ public class ContentFile {
     /**
      * This method is responsible for reading the text file and sanitizing some characters.
      *
-     * @param Path file Locale of file on the disk.
+     * @param file Path Locale of file on the disk.
      * @return String Full text without special characters, trimmed and all letters in lower case.
-     * @throws IOException
+     * @throws IOException Exception thrown when there is a problem reading the file.
      */
     public static String filterText(Path file) throws IOException {
         String file_content = Files.readString(file);
@@ -45,8 +45,8 @@ public class ContentFile {
     /**
      * This method is responsible for transforming a simple text into a vector to facilitate the construction of the digraph.
      *
-     * @param String text Plain text sanitezed in the filterText.
-     * @return List<List<String>> Text gerenerated in filterText transformed in arrays of arrays.
+     * @param text String Plain text sanitezed in the filterText.
+     * @return Text gerenerated in filterText transformed in arrays of arrays.
      */
     public static List<List<String>> textSplit(String text) {
         List<List<String>> splited_lines = new ArrayList<>();

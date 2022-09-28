@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"Model","l":"ContentFile"},{"p":"Controller","l":"Digraph"},{"p":"Model","l":"ManagementFile"},{"p":"<Unnamed>","l":"SI400_Project1"},{"p":"Model","l":"TextProcess"}];updateSearchResults();

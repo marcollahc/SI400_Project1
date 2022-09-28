@@ -35,7 +35,7 @@ public class ManagementFile {
     /**
      * Obtaining files in txt format through a graphical interface.
      *
-     * @return List<File> List with all files selected in the operational system files management.
+     * @return List with all files selected in the operational system files management.
      */
     public List<File> getFiles() {
         JFileChooser chooser = new JFileChooser();
@@ -60,7 +60,7 @@ public class ManagementFile {
     /**
      * Get the name of the original file to create a new one with the csv extension.
      *
-     * @param String path Absolute file path.
+     * @param path String Absolute file path.
      * @return String Same filename, but with extension changed.
      */
     public static String getFilename(String path) {
@@ -70,17 +70,17 @@ public class ManagementFile {
     /**
      * Method responsible for instantiating the object to read the file.
      *
-     * @param String file Absolute file path.
-     * @return Path file Object that makes it possible read the file.
+     * @param file String Absolute file path.
+     * @return file Path Object that makes it possible read the file.
      */
     public static Path openFile(String file) {
         return Path.of(file);
     }
 
     /**
-     * @param String path Path where the file will persist on disk
-     * @param String content Text that will be stored inside the file
-     * @throws IOException
+     * @param path String Path where the file will persist on disk
+     * @param content String Text that will be stored inside the file
+     * @throws IOException Exception thrown when there is a problem writing the file.
      */
     public void writeFile(String path, String content) throws IOException {
         FileWriter file = new FileWriter(path);

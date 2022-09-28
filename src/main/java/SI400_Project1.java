@@ -12,7 +12,7 @@ public class SI400_Project1 {
     /**
      * Method responsible for initializing the project.
      *
-     * @param args default parameter list for the main method.
+     * @param args String default parameter list for the main method.
      */
     public static void main(String[] args) {
         try {

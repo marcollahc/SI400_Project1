@@ -29,7 +29,7 @@ public class TextProcess {
     /**
      * Method to save the state of plain text.
      *
-     * @param String plain_text Storage of text inside extracted from graph.
+     * @param plain_text String Storage of text inside extracted from graph.
      */
     public void setPlainText(String plain_text) {
         this.plain_text = plain_text;
@@ -38,7 +38,7 @@ public class TextProcess {
     /**
      * Method to return the state of full text.
      *
-     * @return List<List<String>> All text stored in a vector.
+     * @return All text stored in a vector.
      */
     public List<List<String>> getFullVector() {
         return this.full_vector;
@@ -47,7 +47,7 @@ public class TextProcess {
     /**
      * Method to save the state of full text.
      *
-     * @param List<List<String>>full_vector Storage complete text do comparsion.
+     * @param full_vector {@link List<List<String>>} Storage complete text do comparsion.
      */
     public void setFullVector(List<List<String>> full_vector) {
         this.full_vector = full_vector;
@@ -56,7 +56,7 @@ public class TextProcess {
     /**
      * Method to return the state of single words.
      *
-     * @return List<String> List of single words taken from the text.
+     * @return List of single words taken from the text.
      */
     public List<String> getUniqueWords() {
         return unique_words;
@@ -105,8 +105,6 @@ public class TextProcess {
 
     /**
      * Method that uses single words to search for the next word in the full text.
-     *
-     * @return void
      */
     public void mountDigraph() {
         this.graph = new ArrayList<>();
