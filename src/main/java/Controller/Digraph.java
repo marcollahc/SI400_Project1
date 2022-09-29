@@ -51,10 +51,11 @@ public class Digraph {
                 
                 JFrame frame = new JFrame("Criador de dígrafos");
                 JOptionPane.showMessageDialog(frame, "Seu arquivo foi salvo no endereço:\n" + new_filename);
-                System.exit(0);
             } catch (Exception e) {
                 System.out.println("Unexpected error in file " + element + ": " + e);
             }
         });
+
+        System.exit(0);
     }
 }
